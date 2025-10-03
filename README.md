@@ -5,22 +5,42 @@ In this week's prep, you completed a responsive grid design that uses two "break
 ## but first, BRANCHES!
 
 **I highly recommend you try to use [SourceTree](https://www.sourcetreeapp.com/) (unless you're on Linux where it's unavailable) for this.**
+Alternatives include VS Code and GitHub Desktop.
 
 1. Pair up!
 2. Accept the github classroom link for this assignment
     1. (coordinate with your partner so that you both end up win the same team in github classroom)
-3. Make a branch that you name as your EID, so like mine will be named `stewarmc`
-    1. you are both doing this on our own computers, so you will each have the main branch you cloned and then 1 more branch, named for your own eid
+2. You will each pick a different task/feature to work on:
+    1. Tiny Grid - make the grid have an even smaller responsive breakpoint
+    2. Dark Mode - implement a dynamic dark mode style using media queries
+3. Make a branch with a name based on the feature you are implementing (either `feat/tiny-grid` or `feat/dark-mode`)
+    1. On your computers, you should each [make a new "branch" and switch to it](https://www.atlassian.com/git/tutorials/using-branches/git-checkout):
+        1. This is usually a two step process - `git branch NEW_BRANCH_NAME` and then `git checkout NEW_BRANCH_NAME`
+        1. You can also do it in one step - `git checkout -b NEW_BRANCH_NAME`
+    2. A Git GUI client should make this easy!
+    3. Make sure you switch to (checkout) the branch!
 4. Push your new branch to the github repo in a remote branch with a matching name
-5. Assign one partner in the pair to the [Tiny Grid task below](#tiny-grid), the other to the [Dark Mode task below](#dark-mode)
-    1. Each of you complete your task in your own branch and commit the cahnges to your branch and push your branch to github
-6. When you're done, work together to merge the branches into main on one of your computers, then push the code to main.
+    1. You should be able to see the branch on the GitHub website!
+5. Follow the instructions for your feature: [Tiny Grid](#tiny-grid) or [Dark Mode](#dark-mode)
+    1. When complete, commit the changes **to your branch** and push your branch (again) to GitHub
+    2. Verify that GitHub shows your work in your branch
+6. When you're done, work together to merge both of your branches into main on one of your computers, then push the code to main.
+    1. You can either do a:
+        1. Sequential Merge - Run `git checkout main` then run `git merge feat/tiny-grid` and then run `git merge feat/dark-mode`
+        2. Octopus Merge - Run `git checkout main` then run `git merge feat/tiny-grid feat/dark-mode` to merge everything simultaneously
+    1. Fix any merge conflicts that could arise by editing the code (recommend using a "merge tool") to make a version of the code with both features.
+    1. See [git merge](https://www.atlassian.com/git/tutorials/using-branches/git-merge)
 7. Submit the assignment by getting the link to the most recent commit in main that has both branches' changes merged in and submitting it to Canvas (it should look something like `https://github.com/343F25/responsive-branching-somethingsomething/commit/f265morestuffinhere`)
 
 ## Tiny Grid
 
 Add in a 3rd breakpoint to now have a 4th layout for the page: a "tiny" layout.
 
+### Helpful Resources:
+* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids
+* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries#targeting_media_features 
+
+### Steps
 1. accept the github classroom assignment linked from your canvas course
     * in doing so, tell github classroom that you're in a group with your neighbor
 1. both you and your neighbor: clone the repository to your local machines
@@ -31,11 +51,18 @@ Add in a 3rd breakpoint to now have a 4th layout for the page: a "tiny" layout.
 
 ## Dark Mode
 
+### Helpful Resources:
+* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+
+To handle the "anchor links", you'll need to include an ev parameter in your event listener, and then call ev.preventDefault();
+
 1. Create a new file called `dark.css`
 1. edit your `index.html` to include a link to `dark.css` in the `head` of the document just before it links to `debug.css`
 1. edit `dark.css` such that if the user has a "dark" preference, the page will be styled with a dark theme.
+    1. What colors to use? Follow your heart! Make the background dark and the foreground light. Colors are great too.
 1. add a javascript file called script.js and a script tag to the bottom of the body of the html file that loads `script.js`.
 1. in `script.js`, add an event listener such that when the user clicks any of the 3 nav items, the page will render with the selected color scheme.
+    1. The first thing you should do is call `ev.preventDefault()` ([see example](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault#blocking_default_click_handling)) or else the page will refresh instead of apply dark mode.
     1. most often, dynamic styling is best implemented via (a) defining style rules for corresponding classes in css and (b) adding/removing classes to the necessary elements dynamically
 
 # Acknowledgements
